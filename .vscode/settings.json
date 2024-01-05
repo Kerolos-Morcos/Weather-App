@@ -1,0 +1,10 @@
+{
+    "cmake.configureOnOpen": false,
+    "cSpell.words": [
+        "avgtemp",
+        "forecastday",
+        "maxtemp",
+        "mintemp",
+        "weatherapi"
+    ]
+}
