@@ -21,7 +21,7 @@ class WeatherInfoBody extends StatelessWidget {
             ),
           ),
           Text(
-            'updated at ${weatherModel.date}',
+            'updated at ${weatherModel.date.hour}:${weatherModel.date.minute} ${weatherModel.date.hour < 12 ? 'AM' : 'PM'}',
             style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.w500,
@@ -33,11 +33,11 @@ class WeatherInfoBody extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Image(
-                image: AssetImage('assets/images/cloudy.png'),
+              Image.network(
+                weatherModel.image!.contains('https:') ? weatherModel.image! : 'https:${weatherModel.image}',
               ),
               Text(
-                weatherModel.temp.toString(),
+                weatherModel.averageTemp.toString(),
                 style: const TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
@@ -46,13 +46,13 @@ class WeatherInfoBody extends StatelessWidget {
               Column(
                 children: [
                   Text(
-                    'Maxtemp ${weatherModel.maxTemp.toString()}',
+                    'Maxtemp ${weatherModel.maxTemp.round()}',
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   Text(
-                    'Mintemp ${weatherModel.minTemp.toString()}',
+                    'Mintemp ${weatherModel.minTemp.round()}',
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                     ),
