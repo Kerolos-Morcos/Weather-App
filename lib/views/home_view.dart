@@ -20,9 +20,6 @@ class _HomeViewState extends State<HomeView> {
       appBar: AppBar(
         title: const Text(
           'Weather App',
-          style: TextStyle(
-            color: Colors.white,
-          ),
         ),
         actions: [
           IconButton(
@@ -38,30 +35,28 @@ class _HomeViewState extends State<HomeView> {
             },
             icon: const Icon(
               Icons.search,
-              color: Colors.white,
             ),
           ),
         ],
-        backgroundColor: Colors.blue,
       ),
-      body:
-          BlocBuilder<GetWeatherCubit, WeatherState>
-        (builder: (context, state) {
-        if (state is WeatherInitialState) {
-          return const NoWeatherBody();
-        } else if (state is WeatherLoadedState) {
-          return const WeatherInfoBody();
-        } else {
-          return const Center(
-            child: Text(
-              'Oops, Something Went Wrong',
-              style: TextStyle(
-                fontSize: 28,
+      body: BlocBuilder<GetWeatherCubit, WeatherState>(
+        builder: (context, state) {
+          if (state is WeatherInitialState) {
+            return const NoWeatherBody();
+          } else if (state is WeatherLoadedState) {
+            return WeatherInfoBody();
+          } else {
+            return const Center(
+              child: Text(
+                'Oops, Something Went Wrong',
+                style: TextStyle(
+                  fontSize: 28,
+                ),
               ),
-            ),
-          );
-        }
-      }),
+            );
+          }
+        },
+      ),
     );
   }
 }
