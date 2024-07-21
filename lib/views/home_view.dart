@@ -44,6 +44,7 @@ class _HomeViewState extends State<HomeView> {
           if (state is WeatherInitialState) {
             return const NoWeatherBody();
           } else if (state is WeatherLoadedState) {
+            // ignore: prefer_const_constructors
             return WeatherInfoBody();
           } else {
             return const Center(
