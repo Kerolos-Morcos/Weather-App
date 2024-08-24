@@ -1,28 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app/cubits/get_weather_cubit/get_weather_cubit.dart';
-import 'package:weather_app/main.dart';
+import 'package:weather_app/helper/theme_color.dart';
 
 class SearchView extends StatelessWidget {
   const SearchView({super.key});
-
+  static String id = 'SearchView';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(2),
+          child: Container(
+            color: Colors.black,
+            height: 0.2,
+          ),
+        ),
         title: const Text(
           'Search city',
         ),
-        // iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Center(
           child: TextField(
-            onSubmitted: (value){
+            onSubmitted: (value) {
               var getWeatherCubit = BlocProvider.of<GetWeatherCubit>(context);
-               getWeatherCubit.getWeather(cityName: value);
-              if(context.mounted) Navigator.pop(context);
+              getWeatherCubit.getWeather(cityName: value);
+              if (context.mounted) Navigator.pop(context);
             },
             decoration: InputDecoration(
               contentPadding: const EdgeInsets.symmetric(
@@ -41,10 +47,10 @@ class SearchView extends StatelessWidget {
               border: OutlineInputBorder(
                 borderSide: BorderSide(
                   color: getThemeColor(
-                  BlocProvider.of<GetWeatherCubit>(context)
-                      .weatherModel
-                      ?.weatherStatus,
-                ),
+                    BlocProvider.of<GetWeatherCubit>(context)
+                        .weatherModel
+                        ?.weatherStatus,
+                  ),
                 ),
                 borderRadius: BorderRadius.circular(
                   10,
@@ -53,10 +59,10 @@ class SearchView extends StatelessWidget {
               focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(
                   color: getThemeColor(
-                  BlocProvider.of<GetWeatherCubit>(context)
-                      .weatherModel
-                      ?.weatherStatus,
-                ),
+                    BlocProvider.of<GetWeatherCubit>(context)
+                        .weatherModel
+                        ?.weatherStatus,
+                  ),
                 ),
                 borderRadius: BorderRadius.circular(
                   16,
@@ -64,10 +70,10 @@ class SearchView extends StatelessWidget {
               ),
             ),
             cursorColor: getThemeColor(
-                  BlocProvider.of<GetWeatherCubit>(context)
-                      .weatherModel
-                      ?.weatherStatus,
-                ),
+              BlocProvider.of<GetWeatherCubit>(context)
+                  .weatherModel
+                  ?.weatherStatus,
+            ),
             cursorWidth: 1,
           ),
         ),

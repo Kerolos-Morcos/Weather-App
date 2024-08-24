@@ -16,10 +16,10 @@ class WeatherService {
           await dio.get('$baseURL/forecast.json?key=$apiKey&q=$cityName');
       return WeatherModel.fromJson(response.data);
     } on DioException catch (e) {
-      final String errorMessage = e.response?.data['error']['message']?? 'Unexpected Error, please try again later';
+      final String errorMessage = e.response?.data['error']['message'] ??
+          'Unexpected Error, please try again later';
       throw Exception(errorMessage);
-    } catch(e)
-    {
+    } catch (e) {
       log(e.toString());
       throw Exception('Oops, something went wrong!');
     }

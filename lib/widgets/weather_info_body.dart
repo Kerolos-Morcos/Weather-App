@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app/cubits/get_weather_cubit/get_weather_cubit.dart';
-import 'package:weather_app/main.dart';
+import 'package:weather_app/helper/theme_color.dart';
 
 class WeatherInfoBody extends StatelessWidget {
   const WeatherInfoBody({super.key});
@@ -13,12 +13,9 @@ class WeatherInfoBody extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            getThemeColor(weatherModel.weatherStatus,
-            ),
-            getThemeColor(weatherModel.weatherStatus,
-            )[300]!,
-            getThemeColor(weatherModel.weatherStatus,
-            )[50]!,
+            getThemeColor(weatherModel.weatherStatus),
+            getThemeColor(weatherModel.weatherStatus)[300]!,
+            getThemeColor(weatherModel.weatherStatus)[50]!,
           ],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
