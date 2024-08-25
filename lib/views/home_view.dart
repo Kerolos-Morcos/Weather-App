@@ -40,9 +40,9 @@ class HomeView extends StatelessWidget {
           if (state is WeatherLoadingState) {
             return Center(
               child: CircularProgressIndicator(
-                color: getThemeColor(BlocProvider.of<GetWeatherCubit>(context)
-                    .weatherModel!
-                    .weatherStatus)[900],
+                color: BlocProvider.of<GetWeatherCubit>(context)
+                    .weatherModel != null ? getThemeColor(BlocProvider.of<GetWeatherCubit>(context)
+                    .weatherModel?.weatherStatus)[700] : Colors.blue[800],
               ),
             );
           } else if (state is WeatherSuccessState) {
