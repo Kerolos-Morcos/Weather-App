@@ -30,7 +30,7 @@ class WeatherApp extends StatelessWidget {
             },
             debugShowCheckedModeBanner: false,
             theme: themeData(context),
-            home: const HomeView(),
+            home:  HomeView(),
           );
         },
       ),

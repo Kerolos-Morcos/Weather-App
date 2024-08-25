@@ -37,10 +37,12 @@ class HomeView extends StatelessWidget {
       body: BlocBuilder<GetWeatherCubit, WeatherState>(
         builder: (context, state) {
           if (state is WeatherLoadingState) {
-            return const NoWeatherBody();
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
           } else if (state is WeatherSuccessState) {
             return const WeatherInfoBody();
-          } else {
+          } else if (state is WeatherFailureState) {
             return const Center(
               child: Text(
                 'Oops, Something Went Wrong',
@@ -49,6 +51,8 @@ class HomeView extends StatelessWidget {
                 ),
               ),
             );
+          } else {
+            return const NoWeatherBody();
           }
         },
       ),
